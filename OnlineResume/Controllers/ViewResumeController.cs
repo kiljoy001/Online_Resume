@@ -8,7 +8,7 @@ namespace OnlineResume.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ValuesController : ControllerBase
+    public class ViewResumeController : ControllerBase
     {
         // GET api/values
         [HttpGet]

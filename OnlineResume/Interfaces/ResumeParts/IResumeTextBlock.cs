@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace OnlineResume.Interfaces.ResumeParts
 {
-    public interface IResumePart
+    public interface IResumeTextBlock
     {
         string Title { get; set; }
         string StartDate { get; set; }

@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Interfaces\UploadInterface\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 

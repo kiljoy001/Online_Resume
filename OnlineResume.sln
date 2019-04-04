@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.271
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineResume", "OnlineResume\OnlineResume.csproj", "{4C11DDBC-2D9F-4BF5-8EF8-0A6B35A9F94E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OnlineResume", "OnlineResume\OnlineResume.csproj", "{4C11DDBC-2D9F-4BF5-8EF8-0A6B35A9F94E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineResumeTests", "OnlineResumeTests\OnlineResumeTests.csproj", "{969ADE67-1239-4027-AD30-98D417CF42F7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{4C11DDBC-2D9F-4BF5-8EF8-0A6B35A9F94E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C11DDBC-2D9F-4BF5-8EF8-0A6B35A9F94E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C11DDBC-2D9F-4BF5-8EF8-0A6B35A9F94E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{969ADE67-1239-4027-AD30-98D417CF42F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{969ADE67-1239-4027-AD30-98D417CF42F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{969ADE67-1239-4027-AD30-98D417CF42F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{969ADE67-1239-4027-AD30-98D417CF42F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

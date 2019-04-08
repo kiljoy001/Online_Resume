@@ -22,7 +22,11 @@ namespace OnlineResume
                 .ConfigureAppConfiguration((context, config) =>
                 {
                     var builtConfig = config.Build();
+#if !DEBUG
                     var vaultUrl = $"https://{builtConfig["VaultName"]}.vault.azure.net/";
+#elif DEBUG
+                    var vaultUrl = builtConfig["OnlineResumeDevSecrets:VaultName"];
+#endif
                     config.AddAzureKeyVault(vaultUrl);
                 })
                 .UseStartup<Startup>();

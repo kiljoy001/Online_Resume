@@ -19,6 +19,12 @@ namespace OnlineResume
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((context, config) =>
+                {
+                    var builtConfig = config.Build();
+                    var vaultUrl = $"https://{builtConfig["VaultName"]}.vault.azure.net/";
+                    config.AddAzureKeyVault(vaultUrl);
+                })
                 .UseStartup<Startup>();
     }
 }

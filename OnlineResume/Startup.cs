@@ -10,6 +10,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using OnlineResume.Interfaces;
+using OnlineResume.Interfaces.ResumeParts;
+using OnlineResume.Interfaces.UploadInterface;
+using OnlineResume.Models;
+using OnlineResume.Utility;
 
 namespace OnlineResume
 {
@@ -26,6 +31,12 @@ namespace OnlineResume
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            //IOC Services
+            services.AddScoped<IResume, Resume>();
+            services.AddScoped<IResumeSkill, ResumeSkill>();
+            services.AddScoped<IResumeTextBlock, ResumeTextBlock>();
+            services.AddSingleton<IUploadToBlob, UploadToBlob>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

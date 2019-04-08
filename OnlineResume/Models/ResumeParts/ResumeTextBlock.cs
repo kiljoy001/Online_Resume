@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OnlineResume.Models
 {
-    public class AccomplishmentsProjects : IResumeTextBlock
+    public class ResumeTextBlock : IResumeTextBlock
     {
         public string Title { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
         public string StartDate { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }

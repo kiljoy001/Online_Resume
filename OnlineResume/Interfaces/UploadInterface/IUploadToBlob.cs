@@ -9,10 +9,6 @@ namespace OnlineResume.Interfaces.UploadInterface
 {
     public interface IUploadToBlob
     {
-        string StorageConnection { get; }
-        CloudBlobContainer Container { get; }
-        CloudBlobClient Client { get; }
-        string FileLocation { get; set; }
-        CloudBlockBlob Reference { get; }
+        void Upload();
     }
 }

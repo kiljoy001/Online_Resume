@@ -21,30 +21,24 @@ namespace OnlineResume.Controllers
         } 
 
         [HttpPost("UploadFiles")]
-        public async Task<IActionResult> Post(List<IFormFile> files)
+        public async Task<IActionResult> Post(IFormFile file)
         {
-            long size = files.Sum(f => f.Length);
+            long size = file.Length;
 
             // full path to file in temp location
             var filePath = Path.GetTempFileName();
-
-            foreach (var formFile in files)
+            using (var stream = new FileStream(filePath, FileMode.Create))
             {
-                if (formFile.Length > 0)
-                {
-                    using (var stream = new FileStream(filePath, FileMode.Create))
-                    {
-                        await formFile.CopyToAsync(stream);
-                    }
-                }
+                await file.CopyToAsync(stream);
             }
+
 
             // process uploaded files
             // Don't rely on or trust the FileName property without validation.
 
             // upload document to Azure Blob Storage
 
-            return Ok(new { count = files.Count, size, filePath });
+            return Ok(new { count = file.FileName, size, filePath });
         }
         //[HttpGet]
         //public IActionResult Get()

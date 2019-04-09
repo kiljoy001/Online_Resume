@@ -12,7 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using OnlineResume.Interfaces;
 using OnlineResume.Interfaces.ResumeParts;
-using OnlineResume.Interfaces.UploadInterface;
+using OnlineResume.Interfaces.Utility;
 using OnlineResume.Models;
 using OnlineResume.Utility;
 
@@ -37,6 +37,10 @@ namespace OnlineResume
             services.AddScoped<IResumeSkill, ResumeSkill>();
             services.AddScoped<IResumeTextBlock, ResumeTextBlock>();
             services.AddSingleton<IUploadToBlob, UploadToBlob>();
+            services.AddSingleton<IBlobSettings, BlobSettings>();
+
+            //Read AppSettings
+            services.Configure<BlobSettings>(Configuration.GetSection("BlobSettings"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

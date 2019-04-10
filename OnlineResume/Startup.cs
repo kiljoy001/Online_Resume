@@ -38,9 +38,11 @@ namespace OnlineResume
             services.AddScoped<IResumeTextBlock, ResumeTextBlock>();
             services.AddSingleton<IUploadToBlob, UploadToBlob>();
             services.AddSingleton<IBlobSettings, BlobSettings>();
+            services.AddSingleton<IStorageEmulatorSettings, StorageEmulatorSettings>();
 
             //Read AppSettings
             services.Configure<BlobSettings>(Configuration.GetSection("BlobSettings"));
+            services.Configure<StorageEmulatorSettings>(Configuration.GetSection("StorageEmulator"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

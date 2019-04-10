@@ -31,7 +31,7 @@ namespace OnlineResumeTests
             StartUp.Start();
             System.Threading.Thread.Sleep(1000);
             StartUp.CleanUp();
-            System.Threading.Thread.Sleep(30000);
+            System.Threading.Thread.Sleep(000);
             //Assert
             var processes = Process.GetProcesses().OrderBy(x => x.ProcessName).ToList();
             Assert.IsFalse(processes.Any(x => x.ProcessName.Contains("AzureStorageEmulator")));

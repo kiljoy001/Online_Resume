@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace OnlineResume.Interfaces.Utility
 {
-    interface IBlobSettings
+    public interface IBlobSettings
     {
         string ConnectionStringName { get; set; }
         string BlobKeyName { get; set; }

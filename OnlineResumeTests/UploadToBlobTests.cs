@@ -11,6 +11,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using OnlineResume.Utility;
 using OnlineResumeTests.Utility;
+using OnlineResume.Interfaces.Utility;
 
 namespace OnlineResumeTests
 {
@@ -31,21 +32,19 @@ namespace OnlineResumeTests
             emulator.Start();
             var mockIConfig = new Mock<IConfiguration>();
             var mockIOption = new Mock<IOptions<BlobSettings>>();
-            var mockBlobSettings = new Mock<BlobSettings>();
+            var mockBlobSettings = new Mock<IBlobSettings>();
 
-            BlobSettings MockBlobSettings = mockBlobSettings.Object;
+            IBlobSettings MockBlobSettings = mockBlobSettings.Object;
             IConfiguration MockedConfig = mockIConfig.Object;
             IOptions<BlobSettings> MockedBlobConfig = mockIOption.Object;
             //Set Mocked properties & output
-            mockIConfig.Setup(m => m.GetConnectionString(It.IsAny<string>())).Returns("DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;");
-
-            mockBlobSettings.Setup(x =>
-                x.ConnectionStringName == "DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;" &&
-                x.BlobKeyName == "BlobKey1" &&
-                x.ContainerName == "test" &&
-                x.BlockBlob =="BlockBlob"
-                );
-            mockIOption.Setup(x => x.Value == MockBlobSettings);
+            mockIConfig.Setup(m => m.GetSection(It.IsAny<string>()));
+            mockBlobSettings.SetupProperty(x => x.ConnectionStringName, "DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;");
+            mockBlobSettings.SetupProperty(x => x.BlobKeyName, "BlobKey1");
+            mockBlobSettings.SetupProperty(x => x.ContainerName, "test");
+            mockBlobSettings.SetupProperty(x => x.BlockBlob, "BlockBlob");
+ 
+            mockIOption.SetupProperty(x => x.Value, MockBlobSettings);
             //set path & name for the test file
             TempPath = Path.GetTempFileName();
             //get file hash

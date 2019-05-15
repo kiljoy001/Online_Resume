@@ -23,7 +23,7 @@ namespace OnlineResume.Controllers
         [HttpPost("UploadFiles")]
         public async Task<IActionResult> Post(IFormFile file)
         {
-            long size = file.Length;
+            var size = file.Length;
 
             // full path to file in temp location
             var filePath = Path.GetTempFileName();
